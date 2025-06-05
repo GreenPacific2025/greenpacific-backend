@@ -15,8 +15,11 @@ app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 # Enable CORS for frontend communication
 from flask_cors import CORS
 
-CORS(app, supports_credentials=True, methods=["GET", "POST", "OPTIONS"], origins=["https://portal.greenpacificcleaning.ca"])
-
+CORS(app,
+     supports_credentials=True,
+     methods=["GET", "POST", "OPTIONS"],
+     origins=["https://portal.greenpacificcleaning.ca"],
+     allow_headers=["Content-Type", "Authorization"])
 
 app.register_blueprint(user_bp, url_prefix='/api')
 app.register_blueprint(proposals_bp, url_prefix='/api/proposals')
