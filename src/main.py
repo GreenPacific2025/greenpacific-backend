@@ -13,7 +13,10 @@ app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'sta
 app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
 # Enable CORS for frontend communication
-CORS(app, origins=["https://portal.greenpacificcleaning.ca"])
+from flask_cors import CORS
+
+CORS(app, supports_credentials=True, methods=["GET", "POST", "OPTIONS"], origins=["https://portal.greenpacificcleaning.ca"])
+
 
 app.register_blueprint(user_bp, url_prefix='/api')
 app.register_blueprint(proposals_bp, url_prefix='/api/proposals')
